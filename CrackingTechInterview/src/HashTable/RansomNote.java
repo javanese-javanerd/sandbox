@@ -14,7 +14,7 @@ import java.util.Map;
  * Runtime complexity: O(m) where m is the size of magazine array.
  * Space complexity: O(hm) where hm is the size of hashed-magazine map.
  * 
- * @author javanese_javanerd
+ * @author javanese-javanerd
  */
 public class RansomNote {
 

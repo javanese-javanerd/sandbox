@@ -5,7 +5,7 @@ package BinarySearchTree;
  * 	1. Boilerplate codes (such as getters/setters) are not needed.
  * 	2. Instance variables have public access.
  * 
- * @author jngui
+ * @author javanese-javanerd
  *
  */
 public class Node {
