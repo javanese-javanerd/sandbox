@@ -130,6 +130,47 @@ public class BST {
 	}
 	
 	/**
+	 * Determine if a given binary tree is of BST.
+	 * 
+	 * Time complexity: O(n) as we have to travel to all nodes.
+	 * Space complexity: O(1) as we don't create new data structure in the process.
+	 * 
+	 * Assumptions:
+	 * 1. There shall be no duplication in input tree.
+	 * 2. Input tree should be of type binary tree.
+	 */
+	public boolean isBinarySearchTree(Node root) {
+		// empty tree is not a BST
+		if (null == root) return false;
+		
+		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+	
+	/**
+	 * Recursively analyze if a node has value exceeding its supposed min and max values.
+	 * For all child-nodes reside to the left of current node, their max value shouldn't exceed current node's value.
+	 * For all child-nodes reside to the right of current node, their min value shouldn't exceed current node's value.
+	 * 
+	 * @param node
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	private boolean isBST(Node node, int min, int max) {
+		
+		if (null == node) {
+			return true;
+		}
+		
+		if (node.value < min && node.value > max) {
+			return false;
+		}
+		
+		return isBST(node.leftNode, min, node.value) &&
+				isBST(node.rightNode, node.value, max);
+	}
+	
+	/**
 	 * BST structure looks like the following:
 	 * 
 	 *       50
