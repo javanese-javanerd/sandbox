@@ -25,12 +25,16 @@ public class BST {
 			return;
 		}
 		
+		// BST has a root. Therefore, insert node as a child.
 		Node child = new Node(value);
+		
+		// insert as left child
 		if (null == node.leftNode && value < node.value) {
 			node.leftNode = child;
 			node.leftSubtreeNodes++;
 			return;
 		}
+		// insert as right child
 		else if (null == node.rightNode && value > node.value) {
 			node.rightNode = child;
 			node.rightSubtreeNodes++;
@@ -38,12 +42,12 @@ public class BST {
 		}
 		
 		if (value < node.value) {
-			// insert to left node
+			// insert to left node recursively
 			node.leftSubtreeNodes++;
 			insertHelper(node.leftNode, value);
 		}
 		else if (value > node.value) {
-			// insert to right node
+			// insert to right node recursively
 			node.rightSubtreeNodes++;
 			insertHelper(node.rightNode, value);
 		}
