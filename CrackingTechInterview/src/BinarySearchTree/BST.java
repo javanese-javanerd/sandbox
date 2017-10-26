@@ -108,7 +108,7 @@ public class BST {
 		return kLowestList.get(k-1); 
 	}
 	
-	public void kThLowestElementHelper(Node node, int k, List<Integer> kLowestList, Integer counter) {
+	private void kThLowestElementHelper(Node node, int k, List<Integer> kLowestList, Integer counter) {
 		if (counter >= k) {
 			return;
 		}
@@ -143,7 +143,7 @@ public class BST {
 		// empty tree is not a BST
 		if (null == root) return false;
 		
-		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		return isBSTHelper(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 	
 	/**
@@ -156,7 +156,7 @@ public class BST {
 	 * @param max
 	 * @return
 	 */
-	private boolean isBST(Node node, int min, int max) {
+	private boolean isBSTHelper(Node node, int min, int max) {
 		
 		if (null == node) {
 			return true;
@@ -166,8 +166,63 @@ public class BST {
 			return false;
 		}
 		
-		return isBST(node.leftNode, min, node.value) &&
-				isBST(node.rightNode, node.value, max);
+		return isBSTHelper(node.leftNode, min, node.value) &&
+				isBSTHelper(node.rightNode, node.value, max);
+	}
+	
+	/**
+	 * Search if a given value exists in the BST.
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public boolean exists(int value) {
+		
+		return search(root, value);
+	}
+	
+	private boolean search(Node node, int value) {
+		if (null == node) return false;
+		
+		return node.value == value || search(node.leftNode, value) || search(node.rightNode, value);
+	}
+	
+	/**
+	 * Print tree in increasing order
+	 * 
+	 */
+	public void printAscending() {
+		
+		printAscHelper(root); 
+	}
+	
+	private void printAscHelper(Node node) {
+		if (null == node) return;
+		
+		printAscHelper(node.leftNode);
+		System.out.println(node.value);
+		printAscHelper(node.rightNode);
+	}
+	
+	/**
+	 * Returns a string representing value in BST in decreasing order
+	 * @return
+	 */
+	public String printDescending() {
+		if (null == root) return "";
+		
+		return printDescHelper(root).trim();
+	}
+	
+	private String printDescHelper(Node node) {
+		if (null == node) return " ";
+		
+		String retVal = "";
+		retVal += printDescHelper(node.rightNode);
+		retVal += node.value + " ";
+		retVal += printDescHelper(node.leftNode);
+		
+		return retVal;
 	}
 	
 	/**
@@ -198,5 +253,14 @@ public class BST {
 		System.out.println("3rd lowest element: " + tree.kThLowestElement(tree.getRoot(), 3));
 		System.out.println("4th lowest element: " + tree.kThLowestElement(tree.getRoot(), 4));
 		System.out.println("7th lowest element: " + tree.kThLowestElement(tree.getRoot(), 7));
+		
+		System.out.println("50 exists? " + tree.exists(50));
+		System.out.println("55 exists? " + tree.exists(55));
+		System.out.println("80 exists? " + tree.exists(80));
+		System.out.println("20 exists? " + tree.exists(20));
+		System.out.println("45 exists? " + tree.exists(45));
+		
+		tree.printAscending();
+		System.out.println(tree.printDescending());
 	}
 }
