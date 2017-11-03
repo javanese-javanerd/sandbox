@@ -230,6 +230,26 @@ public class BST {
 	}
 	
 	/**
+	 * Check if tree is balanced (i.e.: difference in height between left child and right child doesn't exceed 1)
+	 * 
+	 * @return
+	 */
+	public boolean isBalance() {
+		if (null == root) return true;
+		
+		int leftChildHeight = getHeight(root.leftNode);
+		int rightChildHeight = getHeight(root.rightNode);
+		
+		return Math.abs(leftChildHeight - rightChildHeight) <= 1;
+	}
+	
+	private int getHeight(Node node) {
+		if (null == node) return 0;
+		
+		return 1 + Math.max(getHeight(node.leftNode), getHeight(node.rightNode));
+	}
+	
+	/**
 	 * BST structure looks like the following:
 	 * 
 	 *       50
@@ -266,5 +286,6 @@ public class BST {
 		
 		tree.printAscending();
 		System.out.println(tree.printDescending());
+		System.out.println("Is tree balance? "  + tree.isBalance());
 	}
 }
