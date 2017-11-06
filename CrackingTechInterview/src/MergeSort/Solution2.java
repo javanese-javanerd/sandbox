@@ -1,6 +1,9 @@
 package MergeSort;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Solution2 {
 
@@ -68,6 +71,43 @@ public class Solution2 {
 		return inversionCount;
 	}
 	
+	public static void readFromTestFile(String filename) {
+		int[] inputArray = null;
+		FileInputStream fileInputStream = null;
+		Scanner scanner = null;
+		try {
+			fileInputStream = new FileInputStream(filename);
+			scanner = new Scanner(fileInputStream, "UTF-8");
+			int arrSize = scanner.nextInt();
+	        inputArray = new int[arrSize];
+            for(int arr_i = 0; arr_i < arrSize; arr_i++){
+                inputArray[arr_i] = scanner.nextInt();
+            }
+		}
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		finally {
+			if (null != scanner) scanner.close();
+			if (null != fileInputStream) {
+				try {
+					fileInputStream.close();
+				}
+				catch (IOException ioe) {}
+			}
+		}
+		System.out.println("Count for " + filename + ": " + swapCount(inputArray));
+		System.out.println("Input array sorted? " + isSorted(inputArray));
+	}
+	
+	public static boolean isSorted(int[] arr) {
+		for (int index = 1; index < arr.length; index++) {
+			if (arr[index] < arr[index-1]) return false;
+		}
+		
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		int[] array00 = {};		// return 0
 		int[] array01 = {5};		// return 0
@@ -90,8 +130,9 @@ public class Solution2 {
 		System.out.println(swapCount(array5) + " : " + Arrays.toString(array5));
 		System.out.println(swapCount(array6) + " : " + Arrays.toString(array6));
 		
-		// read from input file
-		int[] largeArray = {};
-		System.out.println(swapCount(largeArray));
+		readFromTestFile("./src/MergeSort/TestCase7_32688_0.txt");
+		readFromTestFile("./src/MergeSort/TestCase7_65911_0.txt");
+		readFromTestFile("./src/MergeSort/TestCase7_73099_0.txt");
+		readFromTestFile("./src/MergeSort/TestCase7_100000_4999950000.txt");
 	}
 }
