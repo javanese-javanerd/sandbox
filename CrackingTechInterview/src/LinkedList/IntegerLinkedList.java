@@ -143,6 +143,11 @@ public class IntegerLinkedList {
 		return hasCycleRunningPointersRecursiveHelper(slow.next, fast.next.next);
 	}
 	
+	/**
+	 * Returns the string representation of content of this list.
+	 * 
+	 * @return
+	 */
 	public String print() {
 		String listContent = "";
 		
@@ -153,6 +158,26 @@ public class IntegerLinkedList {
 		}
 		
 		return listContent.trim();
+	}
+	
+	/**
+	 * Reverse the order of this list.
+	 * 
+	 * Runtime complexity: O(n)
+	 * Space complexity: O(1)
+	 * 
+	 */
+	public void reverse() {
+		if (null == head) return;
+		
+		Node currentNode = head.next;
+		head.next = null;
+		while (null != currentNode) {
+			Node nextNode = currentNode.next;
+			currentNode.next = head;
+			head = currentNode;
+			currentNode = nextNode;
+		}
 	}
 	
 	private class Node {
@@ -175,8 +200,11 @@ public class IntegerLinkedList {
 		System.out.println("List contains cycle? " + list.hasCycle());
 		System.out.println("List contains cycle? " + list.hasCycleRecursive());
 		
-		list.insertCycle(1);
-		System.out.println("List contains cycle? " + list.hasCycle());
-		System.out.println("List contains cycle? " + list.hasCycleRecursive());
+		list.reverse();
+		System.out.println(list.print());
+		
+//		list.insertCycle(1);
+//		System.out.println("List contains cycle? " + list.hasCycle());
+//		System.out.println("List contains cycle? " + list.hasCycleRecursive());
 	}
 }
