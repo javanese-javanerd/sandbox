@@ -1,0 +1,43 @@
+Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream.
+For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.
+
+Example:
+
+int k = 3;
+int[] arr = [4,5,8,2];
+KthLargest kthLargestInefficient = new KthLargest(3, arr); // [4,5,8,2]
+kthLargestInefficient.add(3);   // [4,5,8,2,3] --> returns 4
+kthLargestInefficient.add(5);   // [4,5,8,2,3,5] --> returns 5
+kthLargestInefficient.add(10);  // [4,5,8,2,3,5,10] --> returns 5
+kthLargestInefficient.add(9);   // [4,5,8,2,3,5,10,9] --> returns 8
+kthLargestInefficient.add(4);   // [4,5,8,2,3,5,10,9,4] --> returns 8
+
+Note:
+You may assume that nums' length ≥ k-1 and k ≥ 1.
+
+
+Thoughts process:
+.: Whenever I see a problem requiring first, second, third, or kth from a collection, I immediately thought of a data structure that:
+    a. has an ordering property
+    b. has an easy retrieval
+.: Heap is the front runner for this. It offers a constant runtime for extraction of kth element.
+.: Problem is that the poll() operation will remove the element from the collection.
+.: We can solve this by holding on to the removed (i.e.: polled) elements and then re-add them back to the queue.
+.: Runtime complexity analysis:
+    Adding a new element has a runtime of O(log n). We have to do this in k+1 times.
+    Obtaining kth largest element has a constant runtime. In this case, O(k).
+.: Space complexity analysis:
+    Since we are using a priority queue (an implementation of heap d.s.), we need n space for this.
+    Since we are using a list to store "removed" elements from being polled, we require an extra k space for this.
+    All in all, this solution requires O(n+k).
+.: The above solution is actually somewhat bruteforce and is implemented in KthLargestInefficient.java.
+.: A better way of solving this problem is to leverage the following logic:
+    a. A 3rd largest element of a collection is basically the lowest ranked element in the top 3 elements of its sub-collection.
+    b. A 7th largest element of a collection is basically the lowest ranked element in the top 7 elements of its sub-collection.
+    c. This means, given n number of elements in a collection, we only need to consider k numbers of elements to determine its kth largest element.
+    d. Using a priority queue, the smallest number (i.e.: the highest ranked) element will be at the top of the heap.
+.: In terms of space, we only need a priority queue of k size (instead of for the whole input array).
+.: In terms of runtime, we are bounded by the insertion operation of a p.q, which is O(log n). Meanwhile, retrieval is constant.
+
