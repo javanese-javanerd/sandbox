@@ -1,6 +1,5 @@
-package SortCharactersByFrequency;
+package Heap.SortCharactersByFrequency;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;

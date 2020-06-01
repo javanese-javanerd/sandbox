@@ -1,4 +1,4 @@
-package HeapExercises;
+package Heap.HeapExercises;
 
 import java.util.ArrayList;
 import java.util.List;

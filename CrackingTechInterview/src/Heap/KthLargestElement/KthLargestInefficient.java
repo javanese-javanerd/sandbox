@@ -1,4 +1,4 @@
-package KthLargestElement;
+package Heap.KthLargestElement;
 
 import java.util.ArrayList;
 import java.util.Comparator;

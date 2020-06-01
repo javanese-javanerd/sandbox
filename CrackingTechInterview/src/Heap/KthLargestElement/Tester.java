@@ -1,4 +1,4 @@
-package KthLargestElement;
+package Heap.KthLargestElement;
 
 import java.io.*;
 import java.time.Duration;
@@ -94,7 +94,7 @@ public class Tester {
     private static List<Integer> readFile(String filename) throws IOException {
         List<Integer> retCollection = new ArrayList<>();
         String currentDirectory = System.getProperty("user.dir") + File.separator
-                + "src" + File.separator + "KthLargestElement" + File.separator;
+                + "src" + File.separator + "Heap/KthLargestElement" + File.separator;
 
         StreamTokenizer arrayDataTokenizer = new StreamTokenizer(new FileReader(currentDirectory + filename));
         int currentToken = arrayDataTokenizer.nextToken();

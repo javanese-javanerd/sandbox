@@ -1,4 +1,4 @@
-package TopKFrequentElements;
+package Heap.TopKFrequentElements;
 
 import java.util.*;
 

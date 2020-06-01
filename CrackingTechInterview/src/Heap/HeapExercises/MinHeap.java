@@ -1,4 +1,4 @@
-package HeapExercises;
+package Heap.HeapExercises;
 
 /**
  * A min-heap implementation using native array as the underlying data structure.

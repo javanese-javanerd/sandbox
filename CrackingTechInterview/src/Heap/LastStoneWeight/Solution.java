@@ -1,4 +1,4 @@
-package LastStoneWeight;
+package Heap.LastStoneWeight;
 
 import java.util.Arrays;
 import java.util.Comparator;

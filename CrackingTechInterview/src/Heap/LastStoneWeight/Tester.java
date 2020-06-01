@@ -1,6 +1,4 @@
-package LastStoneWeight;
-
-import java.util.Timer;
+package Heap.LastStoneWeight;
 
 public class Tester {
     public static void main(String args[]){

@@ -1,4 +1,4 @@
-package SortCharactersByFrequency;
+package Heap.SortCharactersByFrequency;
 
 public class Tester {
     public static void main(String[] args){
