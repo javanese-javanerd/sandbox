@@ -22,7 +22,7 @@ Thoughts process:
 .: Whenever I see a problem requiring first, second, third, or kth from a collection, I immediately thought of a data structure that:
     a. has an ordering property
     b. has an easy retrieval
-.: Heap is the front runner for this. It offers a constant runtime for extraction of kth element.
+.: HeapExercises is the front runner for this. It offers a constant runtime for extraction of kth element.
 .: Problem is that the poll() operation will remove the element from the collection.
 .: We can solve this by holding on to the removed (i.e.: polled) elements and then re-add them back to the queue.
 .: Runtime complexity analysis:

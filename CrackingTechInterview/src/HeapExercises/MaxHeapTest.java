@@ -1,4 +1,4 @@
-package Heap;
+package HeapExercises;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -25,41 +25,41 @@ public class MaxHeapTest {
 	 */
 	@Test
 	public void test_insert() {
-		MaxHeap<Integer> heap = new MaxHeap<Integer>();
+		MaxHeap<Integer> heap = new MaxHeap<>();
 		
-		heap.insert(new Integer(19));
-		heap.insert(new Integer(11));
-		heap.insert(new Integer(81));
-		heap.insert(new Integer(7));
-		heap.insert(new Integer(10));
-		heap.insert(new Integer(8));
-		heap.insert(new Integer(19));
+		heap.insert(19);
+		heap.insert(11);
+		heap.insert(81);
+		heap.insert(7);
+		heap.insert(10);
+		heap.insert(8);
+		heap.insert(19);
 		
 		assertNotNull("ERROR: heap should not be empty", heap.isEmpty());
 	}
 	
 	@Test
 	public void test_extract() {
-		MaxHeap<String> heap = new MaxHeap<String>();
+		MaxHeap<String> heap = new MaxHeap<>();
 		assertNull(heap.extract());
 		
-		heap.insert(new String("19"));
+		heap.insert("19");
 		String extracted = heap.extract();
 		assertNotNull(extracted);
 		assertEquals("19", extracted);
 		assertTrue(heap.isEmpty());
 		
-		heap.insert(new String("11"));
-		heap.insert(new String("19"));
+		heap.insert("11");
+		heap.insert("19");
 		extracted = heap.extract();
 		assertNotNull(extracted);
 		assertEquals("19", extracted);
 		assertFalse(heap.isEmpty());
 		
 		heap = new MaxHeap<String>();
-		heap.insert(new String("11"));
-		heap.insert(new String("19"));
-		heap.insert(new String("81"));
+		heap.insert("11");
+		heap.insert("19");
+		heap.insert("81");
 		extracted = heap.extract();
 		assertEquals("81", extracted);
 		assertFalse(heap.isEmpty());
@@ -73,15 +73,15 @@ public class MaxHeapTest {
 	
 	@Test
 	public void test_full() {
-		MaxHeap<Integer> heap = new MaxHeap<Integer>();
+		MaxHeap<Integer> heap = new MaxHeap<>();
 		
-		heap.insert(new Integer(19));
-		heap.insert(new Integer(11));
-		heap.insert(new Integer(81));
-		heap.insert(new Integer(7));
-		heap.insert(new Integer(10));
-		heap.insert(new Integer(8));
-		heap.insert(new Integer(19));
+		heap.insert(19);
+		heap.insert(1);
+		heap.insert(8);
+		heap.insert(7);
+		heap.insert(1);
+		heap.insert(8);
+		heap.insert(19);
 		
 		assertTrue(81 == heap.extract());
 		assertTrue(19 == heap.extract());
